@@ -26,9 +26,9 @@ while 1:
         break
 
     if max_elem == 1:
-        max_elem = [a, a]
+        max_elem = [a, a] # Заносим первое попавшееся значение в массив
 
-    elif a > max_elem[0]:
+    elif a > max_elem[0]: # просто проверка на максимальное
         max_elem[1] = max_elem[0]
         max_elem[0] = a
 
