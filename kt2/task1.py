@@ -4,9 +4,15 @@ import pickle
 
 
 def get_words(txt):
+    """
+    Выборка отдельных слов из предложения
+    строка разбивается по проблеьным символам
+    """
     result = {}
 
     # Чистим от знаков препинания, они не относятся к словам
+    # (В Python string.punctuation даст все наборы знаков препинания)
+    # !"#$%&'()*+, -./:;<=>?@[\]^_`{|}~
     for p in _str.punctuation:
         txt = txt.replace(p, ' ')
 
@@ -25,11 +31,18 @@ def get_words_count(s):
 
 
 def get_suggestions(txt):
+    """
+    Разделение текста на предложения, данный способ
+    предполагает, корректную пунктуацию, а именнно:
+    Знак_препинания__пробел_или_конец_строки
+    """
     result = {}
 
+    # Работает, но не сохраняет конечный символ
     # suggestions = re.split("[.!?]\s*", txt)
 
     # Чтобы сохранился символ окончания строки
+    # нашел такой формат регулярки
     suggestions = re.split(r'(?<=[.!?]) ', txt)
 
     for s in suggestions:
@@ -41,6 +54,9 @@ def get_suggestions(txt):
 
 
 def get_punctuations(txt):
+    """
+    Выделение всех знаков препинания из строки
+    """
     result = {}
 
     for p in _str.punctuation:
@@ -135,19 +151,22 @@ def parse_text(txt):
 
     result_print(result)
 
-    dump_result(result, 'data.pickle')
+    dump_result(result, 'data_kt1.pickle')
 
     n = input_num("А еще, я умею разбивать тект по предложениям.\nКакого размера создать обзацы? (n): ")
     paragraphs = gen_paragrapths(result['Предложения'], n)
    
     sorted_paragraphs = sort_paragrapths(paragraphs)
     print_paragraphs(sorted_paragraphs, n)
-    dump_text(sorted_paragraphs, 'data.txt')
-
+    dump_text(sorted_paragraphs, 'data_kt1.txt')
 
 
 if __name__ == '__main__':
-    string = 'Захотелось мне как-то сделать более надёжной передачу информации через радиоканал. ' \
-             'Это не какой-то промышленный проект, или что-то другое серьёзное. ' \
-             'Это скорее для хобби и саморазвития.'
+    string = 'На входе – текстовый файл с некоторым текстом на любом языке. ' \
+             'Текст либо поместить в файл заранее, в этом случае его нужно ' \
+             'будет прислать вместе с исходными кодами, либо при запуске программы ' \
+             'получить откуда угодно любым методом – например, "спарсить" ' \
+             'веб-страницу или сгенерировать случайным образом ("Hjekjl sdy6uyeru gash, ' \
+             'heruityui!" – тоже как бы "текст"). ' \
+             'Во втором случае необходимый инструментарий изучить самостоятельно.'
     parse_text(string)
