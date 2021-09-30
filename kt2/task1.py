@@ -111,8 +111,6 @@ def gen_paragrapths(items, n):
 
 
 def input_num(text):
-    return 2
-
     while 1:
         n = input(text)
         try:
@@ -162,11 +160,24 @@ def parse_text(txt):
 
 
 if __name__ == '__main__':
-    string = 'На входе – текстовый файл с некоторым текстом на любом языке. ' \
-             'Текст либо поместить в файл заранее, в этом случае его нужно ' \
-             'будет прислать вместе с исходными кодами, либо при запуске программы ' \
-             'получить откуда угодно любым методом – например, "спарсить" ' \
-             'веб-страницу или сгенерировать случайным образом ("Hjekjl sdy6uyeru gash, ' \
-             'heruityui!" – тоже как бы "текст"). ' \
-             'Во втором случае необходимый инструментарий изучить самостоятельно.'
-    parse_text(string)
+    string = ''
+
+    # Вроде как дефолтная либа, начиная с Python 3.4
+    from pathlib import Path
+
+    while 1:
+        path = input("Введите путь до файла (лучше полный): ")
+        f = Path(path)
+        if f.is_file():
+            string = f.read_text(encoding="UTF-8")
+            if len(string) > 1:
+                # Чтобы можно было спокойно записать текст по строкам, просто для удобства
+                string = string.replace('\n',' ')
+                parse_text(string)
+                break
+            else:
+                print("Файл найден, но в нем пусто")
+                break
+        else:
+            print("Файл НЕ найден, проверьте путь")
+            continue
