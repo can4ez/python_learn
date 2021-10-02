@@ -1,6 +1,7 @@
 import re
 import string as _str  # Не знаю почему, но на простой импорт он ругается и вместо string подставляет str ..
 import pickle
+from collections import Counter
 
 
 def get_words(txt):
@@ -19,10 +20,7 @@ def get_words(txt):
 
 
 def get_words_count(s):
-    for p in _str.punctuation:
-        s = s.replace(p, ' ')
-
-    return len(s.split())
+    return len(get_words(s))
 
 
 def get_suggestions(txt):
@@ -54,10 +52,13 @@ def get_punctuations(txt):
     """
     result = {}
 
-    for p in _str.punctuation:
-        c = txt.count(p)
-        if c != 0:
-            result[p] = c
+    x = [x for x in re.findall(r'['+_str.punctuation+']', txt)]
+    result = Counter(x)
+
+    # for p in _str.punctuation:
+    #     c = txt.count(p)
+    #     if c != 0:
+    #         result[p] = c
 
     return result
 
