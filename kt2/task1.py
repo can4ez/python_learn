@@ -31,17 +31,13 @@ def get_suggestions(txt):
     """
     result = {}
 
-    # Работает, но не сохраняет конечный символ
-    # suggestions = re.split("[.!?]\s*", txt)
-
     # Чтобы сохранился символ окончания строки
     # нашел такой формат регулярки
     suggestions = re.split(r'(?<=[.!?]) ', txt)
 
-    for s in suggestions:
-        c = get_words_count(s)
-        if c != 0:
-            result[s] = c
+    # {num: num**2 for num in range(1, 11)}
+
+    result = {s: get_words_count(s) for s in suggestions}
 
     return result
 
@@ -54,11 +50,6 @@ def get_punctuations(txt):
 
     x = [x for x in re.findall(r'['+_str.punctuation+']', txt)]
     result = Counter(x)
-
-    # for p in _str.punctuation:
-    #     c = txt.count(p)
-    #     if c != 0:
-    #         result[p] = c
 
     return result
 
