@@ -10,14 +10,9 @@ def get_words(txt):
     """
     result = {}
 
-    # Чистим от знаков препинания, они не относятся к словам
-    # (В Python string.punctuation даст все наборы знаков препинания)
-    # !"#$%&'()*+, -./:;<=>?@[\]^_`{|}~
-    for p in _str.punctuation:
-        txt = txt.replace(p, ' ')
+    x = [x for x in re.findall(r'[А-яA-z\'\-]+', txt)]
 
-    words = txt.split()
-    for w in words:
+    for w in x:
         result[w] = len(w)
 
     return result
