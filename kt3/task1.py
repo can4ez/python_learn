@@ -201,6 +201,10 @@ class Tea(Drink):
     def __str__(self):
         return f'{self.country} {self.form} {self.get_sweet_or_sour().lower()} {self.group} чай "{self.name}" ({self.amount} л) из группы температура {self.temp}°, состав: "{self.structure}"'
 
+    # Перегрузка оператора сравнения
+    def __eq__(self, other): # ==
+        return self.name == other.name and self.amount == self.amount and issubclass(type(other), Fluid)
+
 
 def teaGenerator() -> Tea:
     """Функция - генератор чая"""
@@ -263,6 +267,13 @@ def main():
     print("\nСгенерированный список: ")
     for t in teas:
         print(t)
+
+    a = teas[0]
+    b = teas[1]
+    print(f"Проверка перегрузки равенства (false): {a == b}")
+    b.name = a.name
+    b.amount = a.amount
+    print(f"Проверка перегрузки равенства (true): {a == b}")
 
 
 if __name__ == '__main__':
