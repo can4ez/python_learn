@@ -103,16 +103,7 @@ class Drink(Fluid):
             self.amount += other
             return self
         else:
-            raise TypeError(f"Нельзя складывать объекты типов {self.__class__} и {type(other)}")
-
-    def __mul__(self, other):  # +
-        if isinstance(other, __class__):
-            return Fluid(f"{self.name}", (self.temp + other.temp) / 2, self.amount + other.amount)
-        elif isinstance(other, int) or isinstance(other, float):
-            self.amount *= other
-            return self
-        else:
-            raise TypeError(f"Нельзя складывать объекты типов {self.__class__} и {type(other)}")
+            raise TypeError(f"Нельзя складывать объекты типов {self.__class__} и {type(other)}") 
 
 
 class Tea(Drink):

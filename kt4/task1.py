@@ -37,6 +37,7 @@ def cache_html(driver, url):
 
     driver.get(url)
 
+    # Чтобы точно прогрузилась страница
     sleep(2)
 
     try:
@@ -156,11 +157,10 @@ def main():
     if cache_html(driver, URL) != False:
         print(f'Open cached file "{CACHED_FILE}"')
         getData(driver, CACHED_FILE)
-        getDataRegex(CACHED_FILE)
+        # getDataRegex(CACHED_FILE)
     else :
         print('Error cahe file, go to origin url...')
         getData(driver, URL)
-        getDataRegex(URL, True)
 
     driver.quit()
 
