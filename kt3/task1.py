@@ -133,7 +133,7 @@ class Tea(Drink):
 
     @staticmethod
     def getGroups():
-        return GROUP
+        return Tea.GROUP
 
 
     def _find(f, a):
@@ -216,8 +216,7 @@ def teaGenerator() -> Tea:
         name = names[randint(0, len(names) - 1)]
 
         t = round(uniform(5,24),1)
-        l = round(uniform(0,2),2)
-        b = randint(0,2) == 1
+        l = round(uniform(0,2),2) 
         # Tea("Иван-чай", 40, 3, True, False, "чайный лист, сахар", "прессованный", "Китайский", "Белый")
 
         yield Tea(name, t, l, True, False, "чайный лист, сахар", "прессованный", country, group)
