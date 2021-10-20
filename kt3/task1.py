@@ -194,7 +194,7 @@ class Tea(Drink):
 
     # Перегрузка оператора сравнения
     def __eq__(self, other): # ==
-        return self.name == other.name and self.amount == self.amount and issubclass(type(other), Fluid)
+        return self.name == other.name and self.amount == other.amount
 
 
 def teaGenerator() -> Tea:
@@ -261,9 +261,6 @@ def main():
     a = teas[0]
     b = teas[1]
     print(f"Проверка перегрузки равенства (false): {a == b}")
-    b.name = a.name
-    b.amount = a.amount
-    print(f"Проверка перегрузки равенства (true): {a == b}")
 
 
 if __name__ == '__main__':
