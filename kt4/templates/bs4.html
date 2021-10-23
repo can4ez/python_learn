@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>KT4 - Парсинг сайта</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <nav> <a href="/bs4" class="btn">Получить книги через BeautifulSoup</a>
+            <a href="/regex" class="btn">Получить книги через Regex</a></nav>
+
+        <table class="result">
+            <caption>Результат обработки через BeautifulSoup</caption>
+            <tr>
+                <th>#</th>
+                <th>Автор</th>
+                <th>Книга</th>
+            </tr>
+            {% for book in data %}
+            <tr>
+                <td>{{ book[0] }}</td>
+                <td>{{ book[1] }}</td>
+                <td>{{ book[2] }}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+
+
+</body>
+
+</html>
