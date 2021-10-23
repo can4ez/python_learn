@@ -10,9 +10,9 @@ REGEX_ROWS = ("<tr><td>(.+?)</td><td>(.+?)</td><td>(.+?)</td><td>(.+?)</td><td>(
 # Т.к. страница имеет артефакты в структуре HTML, забираем фикшеную версию
 s =  Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=s)
+driver.minimize_window()
 driver.get('http://lib.ru/HITPARAD/hitlast1000.txt')
 html = driver.page_source
-driver.minimize_window()
 driver.quit()
 
 def parseBS4(html):
@@ -98,13 +98,9 @@ def page_regex():
 # for r in res:
 #     print(r)
 
-if __name__ == "__main__": 
-    app.run(port=5000)
-
-
 # res = parseRegex(html)
 # for r in res:
 #     print(r)
 
-
-
+if __name__ == "__main__": 
+    app.run(port=5000)
