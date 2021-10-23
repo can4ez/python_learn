@@ -21,7 +21,7 @@ HEADERS = {
     'X-Requested-With': 'XMLHttpRequest',
     'Connection': 'keep-alive',
     'Referer': 'https://cyber-server.ru/servers/id/35',
-    'Cookie': 'bsp_login=sahapro33; bsp_passwd=35d4f3fb25284ce683aee5881b9ba52a; bsp_authkeycheck=392bfe20097ed53099f632bce2c8f495',
+    'Cookie': 'bsp_login=...; bsp_passwd=...; bsp_authkeycheck=392bfe20097ed53099f632bce2c8f495',
     'Sec-Fetch-Dest': 'empty',
     'Sec-Fetch-Mode': 'cors',
     'Sec-Fetch-Site': 'same-origi',
