@@ -62,8 +62,7 @@ def regexParseLine(line):
 
     for _, match in enumerate(matches, start=1):
         books.append(match.groups())
-    
-    # Это наверняка можно как-то сделать красивее, но уже устал...
+     
     res = []
     for x in books:
         r = []
@@ -98,9 +97,10 @@ def page_regex():
 # for r in res:
 #     print(r)
 
-# res = parseRegex(html)
-# for r in res:
-#     print(r)
+res = parseRegex(html)
+for r in res:
+    print(r)
 
 if __name__ == "__main__": 
+    print("Сейчас будет запущен Web-сервер, предполагается что он будет запущен по адресу http://localhost:5000/")
     app.run(port=5000)
