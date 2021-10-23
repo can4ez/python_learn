@@ -130,3 +130,4 @@ dmypy.json
 .idea/*
 chromedriver.exe
 kt4/Cached/hitlast1000.txt.html
+work/csgo.py
